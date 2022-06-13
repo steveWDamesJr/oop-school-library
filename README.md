@@ -1,62 +1,67 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# OOP School Library
 
-> Description the project.
+This productivity app is a tool to record what books are in a OOP library and who borrows them. Built with Ruby! 
+
+
+Enjoy!
 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Ruby
+- Terminal
+- IRB
+- Rubocop (linters)
 
 ## Live Demo (if available)
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link]() (Project will have none)
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+## Install
 
-### Setup
+In your terminal, navigate to your current directory and run this code
 
-### Install
+`https://github.com/steveWDamesJr/oop-school-library.git`
 
-### Usage
+Locate the directory in your file explorer
 
-### Run tests
+`cd oop-school-library`
 
-### Deployment
+Install Rubocop
 
+`bundle install`
 
+## Run Linters:
 
-## Authors
+### To run rubocop we use:
+`rubocop`
 
-👤 **Author1**
+### To autocorrect offenses with rubocop we use:
+`rubocop --auto-correct-all` or
+`rubocop -A`
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+Have fun managing your stellar school library!
 
-👤 **Author2**
+## Author
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+👤 **STEVE W DAMES JR**
+
+- GitHub: [@githubhandle](https://github.com/steveWDamesJr)
+- Twitter: [@twitterhandle](https://twitter.com/Steve88312331)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/steve-w-dames-jr/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/steveWDamesJr/oop-school-library/issues).
 
 ## Show your support
 
