@@ -41,13 +41,34 @@ Install Rubocop
 ## Run Linters:
 
 ### To run rubocop we use:
+
 `rubocop`
 
 ### To autocorrect offenses with rubocop we use:
+
 `rubocop --auto-correct-all` or
 `rubocop -A`
 
+
+## Start app
+
+  Activate ruby irb and interact with your new library book-rental management app using the following command in the terminal:
+`ruby main.rb`
+
+
+## Usage
+
+### User Selects a number from a list of options to:
+  Add new students or teachers
+  Add new books
+  Save records of those who rented books and the date the rented them
+  Display all books created and their identifying information
+  Display all users in library and their identifying information
+  Display all book rentals and corresponding user rental information
+
+
 Have fun managing your stellar school library!
+
 
 ## Author
 

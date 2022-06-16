@@ -1,4 +1,5 @@
-require_relative './decorator'
+$LOAD_PATH << '.'
+require 'decorator'
 
 class CapitalizeDecorator < Decorator
   def correct_name
