@@ -153,4 +153,26 @@ class App
       all_rentals_list_by_id
     end
   end
+
+  def run
+    loop do
+      case user_input
+      when '3', '4', '5'
+        create_selections_for_user(user_input)
+      when '1', '2', '6'
+        display_selections_for_user(user_input)
+      when '7'
+        puts 'Thanks for interacting with OOP School Library App. Bye Bye!'
+        exit(true)
+      else
+        puts "\nInvalid input \" #{user_input}\"!"
+        puts 'Please try selecting from the following options: '
+        Services.print_prompt
+        @user_input = gets.chomp
+        run
+      end
+      Services.print_prompt
+      @user_input = gets.chomp
+    end
+  end
 end
