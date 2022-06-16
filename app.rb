@@ -130,7 +130,7 @@ class App
     returns puts 'Please add a rental first.' if @rentals.empty?
     puts "\nSelect a person from the following list by ID number"
     @people.each do |person|
-      puts "ID: #{person.id}, [#{person.class} Name: #{person.name}, Age: #{person.age}"
+      puts "ID: #{person.id}, [#{person.class}] Name: #{person.name}, Age: #{person.age}"
     end
     person_id = gets.chomp.to_i
     rental_list = @rentals.select { |rental| rental.person.id == person_id }
