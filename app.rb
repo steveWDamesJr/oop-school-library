@@ -102,4 +102,16 @@ class App
     print "\nDate: "
     gets.chomp
   end
+
+  def create_rental
+    return print 'Please add a book first' if @books.empty?
+    return print 'Please add a person first' if @people.empty?
+
+    book = @books[book_select]
+    person = @people[person_select]
+    date = date_input
+    rental = Rental.new(date, person, book)
+    @rentals << rental
+    puts 'Rental created successfully!'
+  end
 end
