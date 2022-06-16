@@ -74,4 +74,15 @@ class App
     puts 'Bingo! Book created successfully!'
   end
 
+  def all_books_list
+    @books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", by Author: \"#{book.author}\"" }
+  end
+
+  def all_people_list
+    @people.each_with_index do |person, index|
+      puts "#{index}) [#{person.class}] Age: #{person.age} ID: #{person.id} Name: #{person.name}}"
+    end
+  end
+
+
 end
