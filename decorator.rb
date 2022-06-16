@@ -1,4 +1,5 @@
-require_relative './nameable'
+$LOAD_PATH << '.'
+require 'nameable'
 
 class Decorator < Nameable
   attr_accessor :nameable

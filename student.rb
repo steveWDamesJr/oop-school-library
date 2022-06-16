@@ -1,8 +1,9 @@
-require_relative './person'
+$LOAD_PATH << '.'
+require 'person'
 
 class Student < Person
-  def initialize(classroom:, age:, name: 'unknown', parent_permission: true)
-    super(name: name, age: age, parent_permission: parent_permission)
+  def initialize(age, classroom, name = 'unknown', parent_permission: true)
+    super(age, name, parent_permission: parent_permission)
     @classroom = classroom
   end
 
