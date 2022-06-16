@@ -19,4 +19,38 @@ class App
     @books = []
     @rentals = []
   end
+
+  def users_input_valid?(user_input, arr)
+    arr.include?(user_input)
+  end
+
+  def student_data
+    age = Services.age_input
+    name = Services.name_input
+    has_parent_permission = Services.user_has_permission == 'Y'
+    [age, name, has_parent_permission]
+  end
+
+  def teacher_data
+    age = Services.age_input
+    name = Services.name_input
+    specialization = Services.specialization_input
+    [age, name, specialization]
+  end
+
+  def create_person
+    print "\nDo you want to create a student (1) or a teacher (2)?[Input the number]: "
+    @user_input = gets.chomp.to_s
+    create_person unless users_input_valid?(user_input, %w[1 2])
+    if @user_input == '1'
+      age, name, has_parent_permission = student_data
+      person = Student.new(age, @default_classroom, name, parent_permission: has_parent_permission)
+    else
+      age, name, specialization = teacher_data
+      person = Teacher.new(age, specialization, name)
+    end
+
+    @people << person
+    puts 'Person created successfully!'
+  end
 end
