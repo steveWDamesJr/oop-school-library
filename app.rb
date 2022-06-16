@@ -114,4 +114,43 @@ class App
     @rentals << rental
     puts 'Rental created successfully!'
   end
+
+  def create_selections_for_user(user_input)
+    case user_input
+    when '3'
+      create_person
+    when '4'
+      create_book
+    when '5'
+      create_rental
+    end
+  end
+
+  def all_rentals_list_by_id
+    returns puts 'Please add a rental first.' if @rentals.empty?
+    puts "\nSelect a person from the following list by ID number"
+    @people.each do |person|
+      puts "ID: #{person.id}, [#{person.class} Name: #{person.name}, Age: #{person.age}"
+    end
+    person_id = gets.chomp.to_i
+    rental_list = @rentals.select { |rental| rental.person.id == person_id }
+    if rental_list.empty?
+      puts 'No rentals found for this person.'
+    else
+      rental_list.each do |rental|
+        puts "Date: #{rental.date}, Book:\"#{rental.book.title}\" by #{rental.book.author}"
+      end
+    end
+  end
+
+  def display_selections_for_user(user_input)
+    case user_input
+    when '1'
+      all_books_list
+    when '2'
+      all_people_list
+    when '6'
+      all_rentals_list_by_id
+    end
+  end
 end
