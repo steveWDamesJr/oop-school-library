@@ -84,5 +84,22 @@ class App
     end
   end
 
+  def book_select
+    puts "\nSelect a book from the following list by number "
+    all_books_list
+    book_select_index = gets.chomp
+    (0...@books.length).include?(book_select_index.to_i) ? book_select_index.to_i : book_select
+  end
 
+  def person_select
+    puts "\nSelect a person from the following list by number "
+    all_people_list
+    person_select_index = gets.chomp
+    (0...@people.length).include?(person_select_index.to_i) ? person_select_index.to_i : person_select
+  end
+
+  def date_input
+    print "\nDate: "
+    gets.chomp
+  end
 end
