@@ -6,6 +6,7 @@ require 'rental'
 require 'services'
 require 'student'
 require 'teacher'
+require 'pry'
 
 class App
   attr_accessor :user_input, :password
@@ -144,7 +145,7 @@ class App
   end
 
   def display_selections_for_user(user_input)
-    case user_input
+    case user_inpu
     when '1'
       all_books_list
     when '2'
