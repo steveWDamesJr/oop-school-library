@@ -6,6 +6,9 @@ require 'rental'
 require 'services'
 require 'student'
 require 'teacher'
+require 'books_controller'
+require 'people_controller'
+require 'rentals_controller'
 
 class App
   attr_accessor :user_input, :password
@@ -15,27 +18,13 @@ class App
     Services.print_prompt
     @user_input = gets.chomp
     @default_classroom = Classroom.new('default-classroom')
-    @people = []
-    @books = []
-    @rentals = []
+    @people_controller = PeopleController.new
+    @books_controller = BooksController.new
+    @rentals_controller = RentalsController.new
   end
 
   def users_input_valid?(user_input, arr)
     arr.include?(user_input)
-  end
-
-  def student_data
-    age = Services.age_input
-    name = Services.name_input
-    has_parent_permission = Services.user_has_permission == 'Y'
-    [age, name, has_parent_permission]
-  end
-
-  def teacher_data
-    age = Services.age_input
-    name = Services.name_input
-    specialization = Services.specialization_input
-    [age, name, specialization]
   end
 
   def create_person
@@ -43,59 +32,30 @@ class App
     @user_input = gets.chomp.to_s
     create_person unless users_input_valid?(user_input, %w[1 2])
     if @user_input == '1'
-      age, name, has_parent_permission = student_data
+      age, name, has_parent_permission = @people_controller.student_data
       person = Student.new(age, @default_classroom, name, parent_permission: has_parent_permission)
     else
-      age, name, specialization = teacher_data
+      age, name, specialization = @people_controller.teacher_data
       person = Teacher.new(age, specialization, name)
     end
 
-    @people << person
+    @assign_people = @people_controller.all_people
+    @assign_people << person
     puts 'Person created successfully!'
-  end
-
-  def title_input
-    print 'Title: '
-    title = gets.chomp
-    title.empty? ? title_input : title
-  end
-
-  def author_input
-    print 'Author: '
-    author = gets.chomp
-    author.empty? ? author_input : author
-  end
-
-  def create_book
-    title = title_input
-    author = author_input
-    book = Book.new(title, author)
-    @books << book
-    puts 'Bingo! Book created successfully!'
-  end
-
-  def all_books_list
-    @books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", by Author: \"#{book.author}\"" }
-  end
-
-  def all_people_list
-    @people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class}] Age: #{person.age} ID: #{person.id} Name: #{person.name}}"
-    end
   end
 
   def book_select
     puts "\nSelect a book from the following list by number "
-    all_books_list
+    @books_controller.all_books_list
     book_select_index = gets.chomp
-    (0...@books.length).include?(book_select_index.to_i) ? book_select_index.to_i : book_select
+    (0...@books_controller.books.length).include?(book_select_index.to_i) ? book_select_index.to_i : book_select
   end
 
   def person_select
     puts "\nSelect a person from the following list by number "
-    all_people_list
+    @people_controller.all_people_list
     person_select_index = gets.chomp
-    (0...@people.length).include?(person_select_index.to_i) ? person_select_index.to_i : person_select
+    (0...@people_controller.people.length).include?(person_select_index.to_i) ? person_select_index.to_i : person_select
   end
 
   def date_input
@@ -104,14 +64,15 @@ class App
   end
 
   def create_rental
-    return print 'Please add a book first' if @books.empty?
-    return print 'Please add a person first' if @people.empty?
+    return print 'Please add a book first' if @books_controller.books.empty?
+    return print 'Please add a person first' if @people_controller.people.empty?
 
-    book = @books[book_select]
-    person = @people[person_select]
+    book = @books_controller.books[book_select]
+    person = @people_controller.people[person_select]
     date = date_input
     rental = Rental.new(date, person, book)
-    @rentals << rental
+    @our_rentals = @rentals_controller.all_rentals
+    @our_rentals << rental
     puts 'Rental created successfully!'
   end
 
@@ -120,37 +81,21 @@ class App
     when '3'
       create_person
     when '4'
-      create_book
+      @books_controller.create_book
     when '5'
       create_rental
-    end
-  end
-
-  def all_rentals_list_by_id
-    returns puts 'Please add a rental first.' if @rentals.empty?
-    puts "\nSelect a person from the following list by ID number"
-    @people.each do |person|
-      puts "ID: #{person.id}, [#{person.class}] Name: #{person.name}, Age: #{person.age}"
-    end
-    person_id = gets.chomp.to_i
-    rental_list = @rentals.select { |rental| rental.person.id == person_id }
-    if rental_list.empty?
-      puts 'No rentals found for this person.'
-    else
-      rental_list.each do |rental|
-        puts "Date: #{rental.date}, Book:\"#{rental.book.title}\" by #{rental.book.author}"
-      end
     end
   end
 
   def display_selections_for_user(user_input)
     case user_input
     when '1'
-      all_books_list
+      @books_controller.all_books_list
     when '2'
-      all_people_list
+      @people_controller.all_people_list
     when '6'
-      all_rentals_list_by_id
+      all_people1 = @people_controller.all_people
+      @rentals_controller.all_rentals_list_by_id(all_people1)
     end
   end
 
