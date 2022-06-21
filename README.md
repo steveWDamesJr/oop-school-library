@@ -70,13 +70,21 @@ Install Rubocop
 Have fun managing your stellar school library!
 
 
-## Author
+## Author1
 
 👤 **STEVE W DAMES JR**
 
 - GitHub: [@githubhandle](https://github.com/steveWDamesJr)
 - Twitter: [@twitterhandle](https://twitter.com/Steve88312331)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/steve-w-dames-jr/)
+
+## Author2
+
+
+👤 **Ukwishaka Levy**
+- GitHub: [@levy002](https://github.com/levy002)
+- Twitter: [@levy_ukwishaka](https://twitter.com/levy_ukwishaka)
+- LinkedIn: [@levy-ukwishaka](https://www.linkedin.com/in/levy-ukwishaka/)
 
 ## 🤝 Contributing
 
