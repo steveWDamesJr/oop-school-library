@@ -23,25 +23,22 @@ class App
     @rentals_controller = RentalsController.new
   end
 
-  def users_input_valid?(user_input, arr)
-    arr.include?(user_input)
+  def start
+    run
   end
 
-  def create_person
-    print "\nDo you want to create a student (1) or a teacher (2)?[Input the number]: "
-    @user_input = gets.chomp.to_s
-    create_person unless users_input_valid?(user_input, %w[1 2])
-    if @user_input == '1'
-      age, name, has_parent_permission = @people_controller.student_data
-      person = Student.new(age, @default_classroom, name, parent_permission: has_parent_permission)
-    else
-      age, name, specialization = @people_controller.teacher_data
-      person = Teacher.new(age, specialization, name)
-    end
-
+  def create_student(age, name, parent_permission)
+    student = Student.new(age, @default_classroom, name, parent_permission: parent_permission)
     @assign_people = @people_controller.all_people
-    @assign_people << person
-    puts 'Person created successfully!'
+    @assign_people << student
+    puts 'Student created successfully!'
+  end
+
+  def create_teacher(age, name, specialization)
+    teacher = Teacher.new(age, name, specialization)
+    @assign_people = @people_controller.all_people
+    @assign_people << teacher
+    puts 'Teacher created successfully!'
   end
 
   def book_select
@@ -74,27 +71,5 @@ class App
     @our_rentals = @rentals_controller.all_rentals
     @our_rentals << rental
     puts 'Rental created successfully!'
-  end
-
-  def run
-    loop do
-      case user_input
-      when '3', '4', '5'
-        create_selections_for_user(user_input)
-      when '1', '2', '6'
-        display_selections_for_user(user_input)
-      when '7'
-        puts 'Thanks for interacting with OOP School Library App. Bye Bye!'
-        exit(true)
-      else
-        puts "\nInvalid input \" #{user_input}\"!"
-        puts 'Please try selecting from the following options: '
-        Services.print_prompt
-        @user_input = gets.chomp
-        run
-      end
-      Services.print_prompt
-      @user_input = gets.chomp
-    end
   end
 end
