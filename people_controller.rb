@@ -1,8 +1,10 @@
+require './data'
+
 class PeopleController
   attr_reader :people
 
   def initialize
-    @people = []
+    @people = read_people
   end
 
   def all_people

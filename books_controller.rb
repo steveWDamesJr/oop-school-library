@@ -1,8 +1,11 @@
+require 'json'
+require './data'
+
 class BooksController
   attr_reader :books
 
   def initialize
-    @books = []
+    @books = read_books
   end
 
   def title_input
@@ -22,6 +25,7 @@ class BooksController
     author = author_input
     book = Book.new(title, author)
     @books << book
+    write_books(book)
     puts 'Bingo! Book created successfully!'
   end
 

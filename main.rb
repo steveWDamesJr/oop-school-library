@@ -1,6 +1,8 @@
 $LOAD_PATH << '.'
 require 'app'
 require 'services'
+require 'json'
+require './data'
 
 def users_input_valid?(user_input, arr)
   arr.include?(user_input)

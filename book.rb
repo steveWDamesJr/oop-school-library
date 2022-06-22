@@ -15,4 +15,12 @@ class Book
     @rentals.push(rental) unless @rentals.include?(rental)
     rental.book = self
   end
+
+  def to_json(*_args)
+    {
+      'json_class' => self.class.name,
+      'title' => @title,
+      'author' => @author
+    }
+  end
 end
