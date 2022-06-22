@@ -30,43 +30,51 @@ def write_books(book)
 end
 
 def write_people(person)
+  file = File.open('./people.json', 'w')
+  people_data = person.map do |person|
   if person.instance_of? Student
-    temp = {
-      class: 'Student',
-      name: person.name.to_s,
-      age: person.age.to_s
-    }
-  elsif person.instance_of? Teacher
-    temp = {
-      class: 'Teacher',
-      name: person.name.to_s,
-      age: person.age.to_s
-    }
-  end
-
-  all_people = File.read('./json_files/people.json')
-
-  if all_people.instance_of?(NilClass)
-    File.write('./json_files/books.json', [])
-    all_people = File.read('./json_files/people.json')
-    all_people.push(temp)
-    File.write('./json_files/people.json', JSON.generate(all_people))
-  else
-    new_all_people = JSON.parse(all_people)
-    new_all_people.push(temp)
-    File.write('./json_files/people.json', JSON.generate(new_all_people))
-
+    { workingStatus: 'Student', name: person.name, age: person.age, parent_permission: person.parent_permission, id: person.id }
+    # temp = {
+    #   class: 'Student',
+    #   name: person.name.to_s,
+    #   age: person.age.to_s
+    # }
+  else 
+    { workingStatus: 'Teacher', name: person.name, age: person.age, specialization: person.specialization, id: person.id }
+  # elsif person.instance_of? Teacher
+    # temp = {
+    #   class: 'Teacher',
+    #   name: person.name.to_s,
+    #   age: person.age.to_s
+    # }
   end
 end
+file.puts(JSON.generate(people_data))
+end
+
+#   all_people = File.read('./json_files/people.json')
+
+#   if all_people.instance_of?(NilClass)
+#     File.write('./json_files/books.json', [])
+#     all_people = File.read('./json_files/people.json')
+#     all_people.push(temp)
+#     File.write('./json_files/people.json', JSON.generate(all_people))
+#   else
+#     new_all_people = JSON.parse(all_people)
+#     new_all_people.push(temp)
+#     File.write('./json_files/people.json', JSON.generate(new_all_people))
+
+#   end
+# end
 
 def read_people
   people = []
   all_people = File.read('./json_files/people.json')
   if all_people.instance_of?(String)
     all_people.class
-    new_all_people = JSON.parse(all_people)
+   all_people = JSON.parse(all_people)
     puts all_people.class
-    new_all_people.each do |person|
+   all_people.each do |person|
       people << case person['class']
                 when 'Student'
                   Student.new(person['age'], nil, person['name'], parent_permission: person['parent_permission'])
