@@ -17,8 +17,13 @@ def create_selections_for_user(user_input)
     age = Services.age_input
     case @user_input
     when '1'
-      parent_permission = Services.user_has_permission
-      create_student(age, name, parent_permission)
+      parent_permission = Services.user_has_permission.downcase
+      case parent_permission
+      when 'y'
+        create_student(age, name, true)
+      when 'n'
+        create_student(age, name, false)
+      end
     when '2'
       specialization = Services.specialization_input
       create_teacher(age, name, specialization)

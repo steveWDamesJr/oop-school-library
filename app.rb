@@ -33,12 +33,13 @@ class App
     student = Student.new(age, @default_classroom, name, parent_permission: parent_permission)
     @assign_people = @people_controller.all_people
     @assign_people << student
+    puts student
     write_people(student)
     puts 'Student created successfully!'
   end
 
   def create_teacher(age, name, specialization)
-    teacher = Teacher.new(age, name, specialization)
+    teacher = Teacher.new(age, specialization, name)
     @assign_people = @people_controller.all_people
     @assign_people << teacher
     write_people(teacher)
@@ -74,6 +75,7 @@ class App
     rental = Rental.new(date, person, book)
     @our_rentals = @rentals_controller.all_rentals
     @our_rentals << rental
+    write_rental(rental)
     puts 'Rental created successfully!'
   end
 end

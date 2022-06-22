@@ -1,2 +1,1 @@
-[{"date":"2002-02-02","person": { "id":89, "name":"Ammer"},"book":{"book":"You don't Know JS","author":"Kyle Simpson"}}] 
-
+[{"date":"66789","person":{"name":"QW","age":"45","id":"5","rentals":["#<Rental:0x00007f730ce82e80>"]},"book":{"title":"The Witcher","author":"Spakowski"}}]
