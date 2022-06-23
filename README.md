@@ -15,14 +15,11 @@ Enjoy!
 - IRB
 - Rubocop (linters)
 
-## Live Demo (if available)
-
-[Live Demo Link]() (Project will have none)
-
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
+
 
 ## Install
 
@@ -58,10 +55,9 @@ Install Rubocop
 
 ## Usage
 
-### User Selects a number from a list of options to:
   Add new students or teachers
   Add new books
-  Save records of those who rented books and the date the rented them
+  Save records of those who rented books and the date they rented them
   Display all books created and their identifying information
   Display all users in library and their identifying information
   Display all book rentals and corresponding user rental information
@@ -86,21 +82,25 @@ Have fun managing your stellar school library!
 - Twitter: [@levy_ukwishaka](https://twitter.com/levy_ukwishaka)
 - LinkedIn: [@levy-ukwishaka](https://www.linkedin.com/in/levy-ukwishaka/)
 
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/steveWDamesJr/oop-school-library/issues).
 
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
+
 
 ## Acknowledgments
 
 - Hat tip to anyone whose code was used
 - Inspiration
 - etc
+
 
 ## 📝 License
 

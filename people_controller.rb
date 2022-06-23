@@ -1,8 +1,10 @@
+require './data'
+
 class PeopleController
   attr_reader :people
 
   def initialize
-    @people = []
+    @people = read_people
   end
 
   def all_people
@@ -25,7 +27,7 @@ class PeopleController
 
   def all_people_list
     @people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class}] Age: #{person.age} ID: #{person.id} Name: #{person.name}"
+      puts "#{index}) [#{person.class}] ID: #{person.id} | Name: #{person.name} | Age: #{person.age}"
     end
   end
 end
