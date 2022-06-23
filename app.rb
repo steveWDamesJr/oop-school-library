@@ -61,7 +61,7 @@ class App
   end
 
   def date_input
-    print "\nDate: "
+    print "\nDate:[yyyy/mm/dd] "
     gets.chomp
   end
 
