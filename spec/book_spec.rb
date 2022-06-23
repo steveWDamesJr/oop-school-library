@@ -10,10 +10,10 @@ describe Book do
 
   it 'Return a book rental via add_rental method' do
     book = Book.new('Great Book', 'Great Author')
-    person = Person.new(22, 'Levy', paren t_permission: false)
+    person = Person.new(22, 'Levy', parent_permission: false)
     rental = Rental.new('2022/06/16', person, book)
 
-    person.add_rental(rental)
+    book.add_rental(rental)
 
     expect(book.rentals).to eql [rental]
   end
