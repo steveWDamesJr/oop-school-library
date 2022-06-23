@@ -1,1 +1,1 @@
-[{"date":"66789","person":{"name":"QW","age":"45","id":"5","rentals":["#<Rental:0x00007f730ce82e80>"]},"book":{"title":"The Witcher","author":"Spakowski"}}]
+[{"date":"66789","person":{"name":"QW","age":"45","id":"5","rentals":["#<Rental:0x00007f730ce82e80>"]},"book":{"title":"The Witcher","author":"Spakowski"}},{"date":"2022/13/10","person":{"name":"Ralph Lauren","age":"17","id":"904","rentals":["#<Rental:0x00007fac0095e738>"]},"book":{"title":"The Great One","author":"The Great"}}]
