@@ -5,10 +5,10 @@ require 'decorator'
 require 'trimmer_decorator'
 
 class Person < Nameable
-  attr_accessor :name, :age
-  attr_reader :id, :rentals, :parent_permission
+  attr_accessor :name, :age, :rentals
+  attr_reader :id, :parent_permission
 
-  def initialize(age, name = 'unknown', parent_permission = true)
+  def initialize(age, name = 'unknown', parent_permission: true)
     super()
     @id = Random.rand(1..1000)
     @name = name
@@ -24,7 +24,7 @@ class Person < Nameable
   def correct_name
     @name
   end
-  
+
   def add_rental(rental)
     @rentals.push(self) unless @rentals.include?(rental)
     rental.person = self
