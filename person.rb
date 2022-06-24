@@ -5,8 +5,8 @@ require 'decorator'
 require 'trimmer_decorator'
 
 class Person < Nameable
-  attr_accessor :name, :age
-  attr_reader :id, :rentals, :parent_permission
+  attr_accessor :name, :age, :rentals
+  attr_reader :id, :parent_permission
 
   def initialize(age, name = 'unknown', parent_permission: true)
     super()
@@ -25,15 +25,15 @@ class Person < Nameable
     @name
   end
 
+  def add_rental(rental)
+    @rentals.push(self) unless @rentals.include?(rental)
+    rental.person = self
+  end
+
   private
 
   def of_age?
     @age >= 18
-  end
-
-  def add_rental(rental)
-    @rentals.push(self) unless @rentals.include?(rental)
-    rental.person = self
   end
 end
 
